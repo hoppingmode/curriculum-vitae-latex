@@ -1,0 +1,55 @@
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+
+% Page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Included fonts folder
+\fontdir[./fonts/]
+
+% Color themes: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+% awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-emerald}
+
+\setbool{acvSectionColorHighlight}{true}
+
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\makeatletter
+\patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
+\makeatother
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+\name{Matt}{Young}
+\position{Software Engineer}
+\address{Newlands, Cape Town, South Africa}
+\mobile{074 580 0580}
+\email{mattyoung305@gmail.com}
+\linkedin{matt-young-691b48189}{Matt Young}
+\github{mattgoespro}
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Header (C: center, L: left, R: right)
+\makecvheader[]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+\makecvfooter{\today}{Matt D. Young~~~·~~~Curriculum Vitae}{\thepage}
+
+%-------------------------------------------------------------------------------
+%	CV CONTENT
+%-------------------------------------------------------------------------------
+\input{sections/header_summary}
+\input{sections/sec1_experience}
+\input{sections/sec2_skills}
+\newpage
+\input{sections/sec3_education}
+\input{sections/sec4_projects}
+
+%-------------------------------------------------------------------------------
+\end{document}
