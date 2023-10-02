@@ -1,0 +1,45 @@
+{
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.latex": true
+  },
+  "latex-utilities.formattedPaste.useAsDefault": true,
+  "latex-utilities.liveReformat.enabled": true,
+  "latex-utilities.message.error.show": false,
+  "latex-utilities.message.update.show": false,
+  "latex-workshop.bibtex-fields.sort.enabled": true,
+  "latex-workshop.bibtex-format.tab": "4",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.latex.texDirs": ["${workspaceFolder}/sections"],
+  "latex-workshop.latex.tools": [
+    {
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-outdir=%OUTDIR%",
+        "-file-line-error",
+        "%WORKSPACE_FOLDER%/curriculum-vitae.tex"
+      ],
+      "command": "latexmk",
+      "name": "latexmk"
+    }
+  ],
+  "latex-workshop.linting.chktex.enabled": true,
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "search.exclude": {
+    "out": true
+  },
+  "files.exclude": {
+    "out/*[!*.pdf]": true
+  },
+  "workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "workbench.iconTheme": "material-icon-theme"
+}

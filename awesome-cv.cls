@@ -102,13 +102,12 @@
 %                Configuration for layout
 %-------------------------------------------------------------------------------
 %% Page Layout
-% Configure page margins with geometry
+
+% Page margins
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
 %% Header & Footer
-% Set offset to each header and footer
 \fancyhfoffset{0em}
-% Remove head rule
 \renewcommand{\headrulewidth}{0pt}
 % Clear all header & footer fields
 \fancyhf{}
@@ -122,6 +121,7 @@
 % Gray-scale colors
 \definecolor{white}{HTML}{FFFFFF}
 \definecolor{black}{HTML}{000000}
+\definecolor{blackgray}{HTML}{414141}
 \definecolor{darkgray}{HTML}{333333}
 \definecolor{gray}{HTML}{5D5D5D}
 \definecolor{lightgray}{HTML}{999999}
@@ -133,7 +133,7 @@
 \definecolor{blue}{HTML}{6CE0F1}
 % Text colors
 \definecolor{darktext}{HTML}{414141}
-\colorlet{text}{darkgray}
+\colorlet{text}{blackgray}
 \colorlet{graytext}{gray}
 \colorlet{lighttext}{lightgray}
 % Awesome colors
@@ -163,7 +163,7 @@
 % Set the FontAwesome font to be up-to-date.
 \setfontfamily\FA[Path=\@fontdir]{FontAwesome}
 
-% Set font for header (default is Roboto)
+% Header font (default is Roboto)
 \newfontfamily\headerfont[
   Path=\@fontdir,
   UprightFont=*-Regular,
@@ -187,10 +187,10 @@
 %-------------------------------------------------------------------------------
 %                Configuration for styles
 %-------------------------------------------------------------------------------
-% Configure styles for each CV elements
+% Configure styles for each CV element
+
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headernamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{10}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1.5em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
@@ -220,53 +220,21 @@
 
 \newcommand*{\skillcapacityheaderstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 
-% For elements of the cover letter
-\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
-\newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
-\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
-
 
 %-------------------------------------------------------------------------------
 %                Commands for personal information
 %-------------------------------------------------------------------------------
-% Define photo ID
-% Usage: \photo[circle|rectangle,edge|noedge,left|right]{<path-to-image>}
-\newcommand{\photo}[2][circle,edge,left]{%
-  \def\@photo{#2}
-  \@for\tmp:=#1\do{%
-    \ifthenelse{\equal{\tmp}{circle} \or \equal{\tmp}{rectangle}}%
-      {\let\@photoshape\tmp}{}%
-    \ifthenelse{\equal{\tmp}{edge} \or \equal{\tmp}{noedge}}%
-      {\let\@photoedge\tmp}{}%
-    \ifthenelse{\equal{\tmp}{left} \or \equal{\tmp}{right}}%
-      {\let\@photoalign\tmp}{}%
-  }%
-}
-\def\@photoshape{circle}
-\def\@photoedge{edge}
-\def\@photoalign{left}
 
-% Define writer's name
-% Usage: \name{<firstname>}{<lastname>}
-% Usage: \firstname{<firstname>}
-% Usage: \lastname{<lastname>}
-% Usage: \familyname{<familyname>}
-\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
-\newcommand*{\firstname}[1]{\def\@firstname{#1}}
-\newcommand*{\lastname}[1]{\def\@lastname{#1}}
-\newcommand*{\familyname}[1]{\def\@lastname{#1}}
-\def\@familyname{\@lastname}
 
-% Define writer's address
+% Name
+% Usage: \name{name}
+\newcommand*{\name}[1]{\def\@name{#1}}
+
+% Personal address
 % Usage: \address{<address>}
 \newcommand*{\address}[1]{\def\@address{#1}}
 
-% Define writer's position
+% Work position
 % Usage: \name{<position>}
 \newcommand*{\position}[1]{\def\@position{#1}}
 
@@ -278,11 +246,11 @@
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\def\@email{#1}}
 
-% Defines writer's homepage (optional)
+% Homepage
 % Usage: \homepage{<url>}
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}
 
-% Defines writer's github (optional)
+% GitHub
 % Usage: \github{<github-nick>}
 \newcommand*{\github}[1]{\def\@github{#1}}
 
@@ -303,31 +271,6 @@
 \newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
 \newcommand*{\recipientname}[1]{\def\@recipientname{#1}}
 \newcommand*{\recipientaddress}[1]{\def\@recipientaddress{#1}}
-
-% Defines the title for letter (cover letter only, optional)
-% Usage: \lettertitle{<title>}
-\newcommand*{\lettertitle}[1]{\def\@lettertitle{#1}}
-
-% Defines the date for letter (cover letter only)
-% Usage: \letterdate{<date>}
-\newcommand*{\letterdate}[1]{\def\@letterdate{#1}}
-
-% Defines a message of opening for letter (cover letter only)
-% Usage: \letteropening{<message>}
-\newcommand*{\letteropening}[1]{\def\@letteropening{#1}}
-
-% Defines a message of closing for letter (cover letter only)
-% Usage: \letterclosing{<message>}
-\newcommand*{\letterclosing}[1]{\def\@letterclosing{#1}}
-
-% Defines an enclosure for letter (cover letter only, optional)
-% Usage: \letterenclosure[<enclosure name>]{<enclosure>}
-\newcommand*{\letterenclname}[1][Enclosure]{\def\@letterenclname{#1}}
-\newcommand*{\letterenclosure}[2][]{%
-  % if an optional argument is provided, use it to redefine \enclname
-  \ifthenelse{\equal{#1}{}}{}{\def\@letterenclname{#1}}
-  \def\@letterenclosure{#2}
-}
 
 
 %-------------------------------------------------------------------------------
@@ -370,62 +313,26 @@
 % Define a header for CV
 % Usage: \makecvheader
 \newcommand*{\makecvheader}[1][C]{%
-  \newlength{\headertextwidth}
-  \newlength{\headerphotowidth}
-  \ifthenelse{\isundefined{\@photo}}{
-    \setlength{\headertextwidth}{\textwidth}
-    \setlength{\headerphotowidth}{0cm}
-  }{%
-    \setlength{\headertextwidth}{0.76\textwidth}
-    \setlength{\headerphotowidth}{0.24\textwidth}
-  }%
+
+  \newlength{\headertextwidth}%
+  \setlength{\headertextwidth}{0.76\textwidth}%
+
   \begin{minipage}[c]{\headertextwidth}
-    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
-    \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
-    \\[\acvHeaderAfterNameSkip]%
-    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
-    \headersocialstyle{%
-      \newbool{isstart}%
-      \setbool{isstart}{true}%
-      \ifthenelse{\isundefined{\@mobile}}%
-        {}%
-        {%
-          \faPhone\acvHeaderIconSep\@mobile%
-          \setbool{isstart}{false}%
-        }%
-      \ifthenelse{\isundefined{\@email}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
-      \ifthenelse{\isundefined{\@homepage}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
-        }%
-      \ifthenelse{\isundefined{\@github}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
-        }%
-      \ifthenelse{\isundefined{\@stackoverflowid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-        }%
-      \ifthenelse{\isundefined{\@linkedin}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}%
-        }%
-    } \\[\acvHeaderAfterSocialSkip]%
-  \end{minipage}%
+    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}% CV Title Name
+    \headernamestyle{\@name}%
+    \headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}% CV Title Position
+    \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}%
+    \headersocialstyle{% CV Title Social information
+      \faPhone\acvHeaderIconSep\@mobile\\[\acvHeaderSocialSep]% Mobile
+      \href{mailto:\@email}\\[\acvHeaderSocialSep]% Email
+      % Homepage: hoppingmode.com (when complete)
+      % \ifthenelse{\isundefined\{\@homepage}}{}{\href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}}%
+      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}% GitHub
+      \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}\\[\acvHeaderSocialSep]% StackOverflow
+      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}\\[\acvHeaderSocialSep]% LinkedIn
+    } \\[\acvHeaderAfterSocialSkip]
+
+    \end{minipage}%
 }
 
 % Define a footer for CV
@@ -472,6 +379,7 @@
 }{%
   \end{center}
 }
+
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
@@ -493,6 +401,7 @@
 }{%
   \end{center}
 }
+
 % Define a subentry of cv information
 % Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
 \newcommand*{\cvsubentry}[4]{%
@@ -511,6 +420,32 @@
   \end{tabular*}
 }
 
+% Define a custom environment for CV projects
+\newenvironment{cvprojects}{
+    \begin{itemize}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+}{
+    \end{itemize}
+}
+
+% Define a custom command for individual CV project entries
+\newcommand{\cvproject}[5]{%
+    \item \entrytitlestyle{Project: #1}
+    \begin{itemize}
+        \item \subentrytitlestyle{Date:} \subdescriptionstyle{#2}
+        \item \subentrytitlestyle{Description:} \subdescriptionstyle{#3}
+        \item \subentrytitlestyle{Key Technologies:} \subdescriptionstyle{#4}
+        \item \subentrytitlestyle{Highlights:} {
+          \item \subentrytitlestyle{Achievements}:
+            \begin{itemize}
+                \subdescriptionstyle{#5}
+            \end{itemize}
+        }
+    \end{itemize}
+}
+
+
 % Define an environment for cvskill
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
@@ -523,6 +458,7 @@
     \end{tabular*}
   \end{center}
 }
+
 
 % Define a cv section header
 % Usage: \cvskill{<type>}{<skillset>}
