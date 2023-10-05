@@ -1,2 +1,4 @@
 out/
-indent.log
+*.log
+*.aux
+*.out

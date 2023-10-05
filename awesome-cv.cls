@@ -312,28 +312,26 @@
 %-------------------------------------------------------------------------------
 % Define a header for CV
 % Usage: \makecvheader
-\newcommand*{\makecvheader}[1][C]{%
+\newcommand*{\makecvheader}{%
 
   \newlength{\headertextwidth}%
   \setlength{\headertextwidth}{0.76\textwidth}%
 
   \begin{minipage}[c]{\headertextwidth}
-    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}% CV Title Name
+    \centering
     \headernamestyle{\@name}%
-    \headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}% CV Title Position
+    \headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}%
     \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}%
     \headersocialstyle{% CV Title Social information
-      \faPhone\acvHeaderIconSep\@mobile\\[\acvHeaderSocialSep]% Mobile
-      \href{mailto:\@email}\\[\acvHeaderSocialSep]% Email
-      % Homepage: hoppingmode.com (when complete)
-      % \ifthenelse{\isundefined\{\@homepage}}{}{\href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}}%
-      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}% GitHub
-      \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}\\[\acvHeaderSocialSep]% StackOverflow
-      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}\\[\acvHeaderSocialSep]% LinkedIn
-    } \\[\acvHeaderAfterSocialSkip]
+      \faPhone\acvHeaderIconSep\@mobile\\[\acvHeaderSocialSep]%
+      \href{mailto:\@email}\\[\acvHeaderSocialSep]%
+      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
+      \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}\\[\acvHeaderSocialSep]%
+      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}\\[\acvHeaderSocialSep]%
+    } \\[\acvHeaderAfterSocialSkip]%
 
     \end{minipage}%
-}
+}%
 
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
