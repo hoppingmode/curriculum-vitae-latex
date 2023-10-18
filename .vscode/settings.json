@@ -7,6 +7,20 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.latex": true
   },
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.fls": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "out/*[!*.pdf]": true
+  },
+  "files.watcherExclude": {
+    "**/*.aux": true,
+    "**/*.fls": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "out/*[!*.pdf]": true
+  },
   "latex-utilities.formattedPaste.useAsDefault": true,
   "latex-utilities.liveReformat.enabled": true,
   "latex-utilities.message.error.show": false,
@@ -14,9 +28,11 @@
   "latex-workshop.bibtex-fields.sort.enabled": true,
   "latex-workshop.bibtex-format.tab": "4",
   "latex-workshop.latex.autoBuild.run": "onFileChange",
-  "latex-workshop.latex.outDir": "%DIR%/out",
-  "latex-workshop.latex.texDirs": ["${workspaceFolder}/tex"],
   "latex-workshop.latex.clean.method": "glob",
+  "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.latex.texDirs": [
+    "${workspaceFolder}/tex"
+  ],
   "latex-workshop.latex.tools": [
     {
       "args": [
@@ -35,13 +51,6 @@
   "latex-workshop.synctex.afterBuild.enabled": true,
   "search.exclude": {
     "out": true
-  },
-  "files.exclude": {
-    "**/*.log": true,
-    "**/*.out": true,
-    "**/*.aux": true,
-    "**/*.fls": true,
-    "out/*[!*.pdf]": true
   },
   "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"
