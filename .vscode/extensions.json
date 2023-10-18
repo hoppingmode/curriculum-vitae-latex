@@ -10,6 +10,7 @@
     "pkief.material-icon-theme",
     "ibm.output-colorizer",
     "esbenp.prettier-vscode",
-    "richie5um2.vscode-sort-json"
+    "richie5um2.vscode-sort-json",
+    "eamodio.gitlens"
   ]
 }

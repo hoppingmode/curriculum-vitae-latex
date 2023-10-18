@@ -1,27 +1,4 @@
-%% Start of file `awesome-cv.cls'.
-% Awesome CV Class File
-%
-% This class has been downloaded from:
-% https://github.com/posquit0/Awesome-CV
-%
-% Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
-%
-% Notes:
-% 1) This class file defines the structure and layout of the template file (cv.tex, resume.tex).
-% 2) It has been written in such a way that under most circumstances you
-% should not need to edit it.
-%
-% Class license:
-% LPPL v1.3c (http://www.latex-project.org/lppl)
-%
-
-
-%-------------------------------------------------------------------------------
-%                Identification
-%-------------------------------------------------------------------------------
-\ProvidesClass{awesome-cv}[2017/02/05 v1.6.1 Awesome Curriculum Vitae Class]
+\ProvidesClass{cv}
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -264,13 +241,6 @@
 % Usage: \linkedin{<linked-in-nick>}
 \newcommand*{\linkedin}[2]{\def\@linkedin{#1}\def\@linkedinname{#2}}
 
-% Defines recipient's information (cover letter only)
-% Usage: \recipient{<recipient name>}{<recipient address>}
-% Usage: \recipientname{<recipient name>}
-% Usage: \recipientaddress{<recipient address>}
-\newcommand*{\recipient}[2]{\def\@recipientname{#1}\def\@recipientaddress{#2}}
-\newcommand*{\recipientname}[1]{\def\@recipientname{#1}}
-\newcommand*{\recipientaddress}[1]{\def\@recipientaddress{#1}}
 
 
 %-------------------------------------------------------------------------------
@@ -312,26 +282,64 @@
 %-------------------------------------------------------------------------------
 % Define a header for CV
 % Usage: \makecvheader
-\newcommand*{\makecvheader}{%
-
-  \newlength{\headertextwidth}%
-  \setlength{\headertextwidth}{0.76\textwidth}%
-
+\newcommand*{\makecvheader}[1][C]{%
+  \newlength{\headertextwidth}
+  \newlength{\headerphotowidth}
+  \ifthenelse{\isundefined{\@photo}}{
+    \setlength{\headertextwidth}{\textwidth}
+    \setlength{\headerphotowidth}{0cm}
+  }{%
+    \setlength{\headertextwidth}{0.76\textwidth}
+    \setlength{\headerphotowidth}{0.24\textwidth}
+  }%
   \begin{minipage}[c]{\headertextwidth}
-    \centering
+    \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     \headernamestyle{\@name}%
-    \headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}%
-    \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}%
-    \headersocialstyle{% CV Title Social information
-      \faPhone\acvHeaderIconSep\@mobile\\[\acvHeaderSocialSep]%
-      \href{mailto:\@email}\\[\acvHeaderSocialSep]%
-      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
-      \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}\\[\acvHeaderSocialSep]%
-      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}\\[\acvHeaderSocialSep]%
+    \\[\acvHeaderAfterNameSkip]%
+    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
+    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+    \headersocialstyle{%
+      \newbool{isstart}%
+      \setbool{isstart}{true}%
+      \ifthenelse{\isundefined{\@mobile}}%
+        {}%
+        {%
+          \faPhone\acvHeaderIconSep\@mobile%
+          \setbool{isstart}{false}%
+        }%
+      \ifthenelse{\isundefined{\@email}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
+        }%
+      \ifthenelse{\isundefined{\@homepage}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+        }%
+      \ifthenelse{\isundefined{\@github}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
+        }%
+      \ifthenelse{\isundefined{\@stackoverflowid}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
+        }%
+      \ifthenelse{\isundefined{\@linkedin}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}%
+        }%
     } \\[\acvHeaderAfterSocialSkip]%
-
-    \end{minipage}%
-}%
+  \end{minipage}%
+}
 
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}

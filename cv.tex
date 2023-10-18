@@ -1,8 +1,7 @@
 %-------------------------------------------------------------------------------
 % CONFIGURATIONS
 %-------------------------------------------------------------------------------
-% A4 paper size by default, use 'letterpaper' for US letter
-\documentclass[11pt, a4paper]{awesome-cv}
+\documentclass[11pt, a4paper]{cv}
 
 % Page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
@@ -14,6 +13,7 @@
 \colorlet{awesome}{awesome-emerald}
 
 \setbool{acvSectionColorHighlight}{true}
+
 
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
@@ -47,14 +47,14 @@
 %-------------------------------------------------------------------------------
 %	CV CONTENT
 %-------------------------------------------------------------------------------
-\input{sections/header_summary}
-\input{sections/sec1_experience}
-\input{sections/sec2_skills}
+\input{tex/sections/header}
+\input{tex/sections/experience}
+\input{tex/sections/skills}
 
 \newpage
 
-\input{sections/sec3_education}
-\input{sections/sec4_projects}
+\input{tex/sections/education}
+\input{tex/sections/projects}
 
 %-------------------------------------------------------------------------------
 \end{document}

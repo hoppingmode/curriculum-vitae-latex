@@ -15,7 +15,8 @@
   "latex-workshop.bibtex-format.tab": "4",
   "latex-workshop.latex.autoBuild.run": "onFileChange",
   "latex-workshop.latex.outDir": "%DIR%/out",
-  "latex-workshop.latex.texDirs": ["${workspaceFolder}/sections"],
+  "latex-workshop.latex.texDirs": ["${workspaceFolder}/tex"],
+  "latex-workshop.latex.clean.method": "glob",
   "latex-workshop.latex.tools": [
     {
       "args": [
@@ -24,7 +25,7 @@
         "-interaction=nonstopmode",
         "-outdir=%OUTDIR%",
         "-file-line-error",
-        "%WORKSPACE_FOLDER%/curriculum-vitae.tex"
+        "%DIR%/cv.tex"
       ],
       "command": "latexmk",
       "name": "latexmk"
@@ -36,6 +37,10 @@
     "out": true
   },
   "files.exclude": {
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.aux": true,
+    "**/*.fls": true,
     "out/*[!*.pdf]": true
   },
   "workbench.editorAssociations": {

@@ -1,4 +1,10 @@
-out/
-*.log
-*.aux
-*.out
+# Build
+out
+
+# Temp files
+**/*.aux
+**/*.out
+**/*.fls
+
+# Log files
+**/*.log
