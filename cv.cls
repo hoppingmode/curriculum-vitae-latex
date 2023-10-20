@@ -284,59 +284,28 @@
 % Usage: \makecvheader
 \newcommand*{\makecvheader}[1][C]{%
   \newlength{\headertextwidth}
-  \newlength{\headerphotowidth}
-  \ifthenelse{\isundefined{\@photo}}{
-    \setlength{\headertextwidth}{\textwidth}
-    \setlength{\headerphotowidth}{0cm}
-  }{%
-    \setlength{\headertextwidth}{0.76\textwidth}
-    \setlength{\headerphotowidth}{0.24\textwidth}
-  }%
+  \setlength{\headertextwidth}{\textwidth}%
+
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     \headernamestyle{\@name}%
     \\[\acvHeaderAfterNameSkip]%
-    \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
-    \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+    \headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}%
+    \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}%
+
     \headersocialstyle{%
       \newbool{isstart}%
       \setbool{isstart}{true}%
-      \ifthenelse{\isundefined{\@mobile}}%
-        {}%
-        {%
-          \faPhone\acvHeaderIconSep\@mobile%
-          \setbool{isstart}{false}%
-        }%
-      \ifthenelse{\isundefined{\@email}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
+      \faPhone\@mobile\acvHeaderSocialSep%
+      \faEnvelope\acvHeaderIconSep\@email\acvHeaderSocialSep%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
         }%
-      \ifthenelse{\isundefined{\@github}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
-        }%
-      \ifthenelse{\isundefined{\@stackoverflowid}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
-        }%
-      \ifthenelse{\isundefined{\@linkedin}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}%
-        }%
+      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
+      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}%
     } \\[\acvHeaderAfterSocialSkip]%
   \end{minipage}%
 }
@@ -426,29 +395,32 @@
   \end{tabular*}
 }
 
-% Define a custom environment for CV projects
-\newenvironment{cvprojects}{
-    \begin{itemize}
-    \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
-}{
-    \end{itemize}
+% Define an environment for cv projects
+\newenvironment{cvprojects}{%
+  \vspace{\acvSectionTopSkip}
+  \vspace{-2.0mm}
+}{%
+}
+
+\newenvironment{cvprojectcontent}{%
+  \begin{itemize}
+}{%
+  \end{itemize}
 }
 
 % Define a custom command for individual CV project entries
-\newcommand{\cvproject}[5]{%
-    \item \entrytitlestyle{Project: #1}
-    \begin{itemize}
-        \item \subentrytitlestyle{Date:} \subdescriptionstyle{#2}
-        \item \subentrytitlestyle{Description:} \subdescriptionstyle{#3}
-        \item \subentrytitlestyle{Key Technologies:} \subdescriptionstyle{#4}
-        \item \subentrytitlestyle{Highlights:} {
-          \item \subentrytitlestyle{Achievements}:
-            \begin{itemize}
-                \subdescriptionstyle{#5}
-            \end{itemize}
-        }
-    \end{itemize}
+\newcommand*{\cvproject}[3]{%
+    {\entrytitlestyle{#1}\\}
+    \descriptionstyle{#2}
+    {#3}
+}
+
+\newcommand{\cvprojectbulletstyle}[2]{%
+  \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:} \bodyfontlight{#2}}%
+}
+
+\newcommand{\cvprojectbullet}[2]{%
+    \item\cvprojectbulletstyle{#1}{#2}%
 }
 
 
@@ -466,7 +438,7 @@
 }
 
 
-% Define a cv section header
+% Define a cv section skillheader
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskillcapacity}[1]{%
 \skillcapacityheaderstyle{#1} \\
