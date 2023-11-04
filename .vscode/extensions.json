@@ -10,6 +10,7 @@
     "esbenp.prettier-vscode",
     "richie5um2.vscode-sort-json",
     "eamodio.gitlens",
-    "torn4dom4n.latex-support"
+    "torn4dom4n.latex-support",
+    "markosth09.color-picker"
   ]
 }

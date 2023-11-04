@@ -3,11 +3,7 @@
 
 
 %-------------------------------------------------------------------------------
-%                Class options
-%
-% (need to be done before the external package loading, for example because
-% we need \paperwidth, \paperheight and \@ptsize to be defined before loading
-% geometry and fancyhdr)
+%                CLASS OPTIONS
 %-------------------------------------------------------------------------------
 % Options for draft or final
 \DeclareOption{draft}{\setlength\overfullrule{5pt}}
@@ -21,54 +17,50 @@
 
 
 %-------------------------------------------------------------------------------
-%                3rd party packages
+%                3RD PARTY PACKAGES
 %-------------------------------------------------------------------------------
-% Needed to make fixed length table
+% Create fixed length tables
 \RequirePackage{array}
 % Needed to handle list environment
 \RequirePackage{enumitem}
-% Needed to handle text alignment
+% Text alignment
 \RequirePackage{ragged2e}
-% Needed to configure page layout
+% Configure page layout
 \RequirePackage{geometry}
-% Needed to make header & footer effeciently
+% Create headers & footers
 \RequirePackage{fancyhdr}
-% Needed to manage colors
-\RequirePackage{xcolor}
-% Needed to use \ifxetex-\else-\fi statement
-\RequirePackage{ifxetex}
-% Needed to use \if-\then-\else statement
+% Allow \if-\then-\else statements
 \RequirePackage{xifthen}
-% Needed to use a toolbox of programming tools
-\RequirePackage{etoolbox}
-% Needed to change line spacing in specific environment
-\RequirePackage{setspace}
-% Needed to manage fonts
-\RequirePackage[quiet]{fontspec}
-% To support LaTeX quoting style
-\defaultfontfeatures{Ligatures=TeX}
-% Needed to manage math fonts
+% Manage math fonts
 \RequirePackage{unicode-math}
-% Needed to use icons from font-awesome
+% Use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
 \RequirePackage[default,opentype]{sourcesanspro}
-% Needed for the photo ID
+% Manage colors
 \RequirePackage[skins]{tcolorbox}
-% Needed to deal a paragraphs
+% Create paragraphs
 \RequirePackage{parskip}
-% Needed to deal hyperlink
+% Additional icons/symbols
+\RequirePackage{pifont}
+% Manage hyperlinks
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
-  pdftitle={},
-  pdfauthor={},
-  pdfsubject={},
-  pdfkeywords={}
+  pdftitle={Curriculum Vitae ~ Matt Young},
+  pdfauthor={Matt Young},
+  pdfsubject={CV},
+  pdfkeywords={
+    CV, curriculum, vitae, resume, software, engineer, technology, computer, science, developer, programmer,
+    web, mobile, android, linux,
+    python, java, c++, javascript, html, css, postgresql,
+    react, react-native, angular, node, express, latex,
+    git, github, web, services, docker, linux, bash
+  }
 }
 
 
 %-------------------------------------------------------------------------------
-%                Configuration for directory locations
+%                DIRECTORY LOCATIONS
 %-------------------------------------------------------------------------------
 % Configure a directory location for fonts(default: 'fonts/')
 \newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
@@ -76,71 +68,83 @@
 
 
 %-------------------------------------------------------------------------------
-%                Configuration for layout
+%                LAYOUT
 %-------------------------------------------------------------------------------
-%% Page Layout
-
 % Page margins
 \geometry{left=2.0cm, top=1.5cm, right=2.0cm, bottom=2.0cm, footskip=.5cm}
 
-%% Header & Footer
+
+%-------------------------------------------------------------------------------
+%                COLORS
+%-------------------------------------------------------------------------------
+% Grayscale
+\definecolor{gray}{HTML}{616161}
+\definecolor{darkgray}{HTML}{212121}
+\definecolor{blackgray}{HTML}{414141}
+
+% Text
+\colorlet{lighttext}{gray}
+\colorlet{text}{darkgray}
+\colorlet{darktext}{darkgray}
+
+% Awesome Theme
+\definecolor{awesome-emerald}{HTML}{00A388}
+\definecolor{awesome-darknight}{HTML}{131A28}
+
+
+%-------------------------------------------------------------------------------
+%                FONTS
+%-------------------------------------------------------------------------------
+\setfontfamily\FA[Path=\@fontdir]{FontAwesome}
+\newcommand*{\bodyfont}{\sourcesanspro}
+\newcommand*{\bodyfontlight}{\sourcesansprolight}
+
+
+%-------------------------------------------------------------------------------
+%                PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+\newcommand*{\name}[1]{\def\@name{#1}}
+\newcommand*{\address}[1]{\def\@address{#1}}
+\newcommand*{\position}[1]{\def\@position{#1}}
+\newcommand*{\mobile}[1]{\def\@mobile{#1}}
+\newcommand*{\email}[1]{\def\@email{#1}}
+\newcommand*{\homepage}[1]{\def\@homepage{#1}}
+\newcommand*{\github}[1]{\def\@github{#1}}
+\newcommand*{\linkedin}[2]{\def\@linkedin{#1}\def\@linkedinname{#2}}
+
+
+%-------------------------------------------------------------------------------
+%                UTILITIES
+%-------------------------------------------------------------------------------
+% Align an element of tabular table
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Draw horizontal line with specific thickness
+\def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+
+% Execute conditional statements by checking empty string
+\newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
+
+
+%-------------------------------------------------------------------------------
+%                HEADER AND FOOTER
+%-------------------------------------------------------------------------------
 \fancyhfoffset{0em}
 \renewcommand{\headrulewidth}{0pt}
 % Clear all header & footer fields
 \fancyhf{}
-% Enable if you want to make header or footer using fancyhdr
+% Enable header or footer using fancyhdr
 \pagestyle{fancy}
 
+\newcommand{\acvHeaderNameDelim}{\space}
+\newcommand{\acvHeaderAfterNameSkip}{.4mm}
+\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
+\newcommand{\acvHeaderAfterAddressSkip}{0.4mm}
+\newcommand{\acvHeaderIconSep}{\space}
+\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
-%-------------------------------------------------------------------------------
-%                Configuration for colors
-%-------------------------------------------------------------------------------
-% Gray-scale colors
-\definecolor{white}{HTML}{FFFFFF}
-\definecolor{black}{HTML}{000000}
-\definecolor{blackgray}{HTML}{414141}
-\definecolor{darkgray}{HTML}{333333}
-\definecolor{gray}{HTML}{5D5D5D}
-\definecolor{lightgray}{HTML}{999999}
-% Basic colors
-\definecolor{green}{HTML}{C2E15F}
-\definecolor{orange}{HTML}{FDA333}
-\definecolor{purple}{HTML}{D3A4F9}
-\definecolor{red}{HTML}{FB4485}
-\definecolor{blue}{HTML}{6CE0F1}
-% Text colors
-\definecolor{darktext}{HTML}{414141}
-\colorlet{text}{blackgray}
-\colorlet{graytext}{gray}
-\colorlet{lighttext}{lightgray}
-% Awesome colors
-\definecolor{awesome-emerald}{HTML}{00A388}
-\definecolor{awesome-skyblue}{HTML}{0395DE}
-\definecolor{awesome-red}{HTML}{DC3522}
-\definecolor{awesome-pink}{HTML}{EF4089}
-\definecolor{awesome-orange}{HTML}{FF6138}
-\definecolor{awesome-nephritis}{HTML}{27AE60}
-\definecolor{awesome-concrete}{HTML}{95A5A6}
-\definecolor{awesome-darknight}{HTML}{131A28}
-\colorlet{awesome}{awesome-red}
-
-% Boolean value to switch section color highlighting
-\newbool{acvSectionColorHighlight}
-\setbool{acvSectionColorHighlight}{true}
-
-% Awesome section color
-\def\@sectioncolor#1#2#3{%
-  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
-}
-
-
-%-------------------------------------------------------------------------------
-%                Configuration for fonts
-%-------------------------------------------------------------------------------
-% Set the FontAwesome font to be up-to-date.
-\setfontfamily\FA[Path=\@fontdir]{FontAwesome}
-
-% Header font (default is Roboto)
 \newfontfamily\headerfont[
   Path=\@fontdir,
   UprightFont=*-Regular,
@@ -157,131 +161,13 @@
   BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
-\newcommand*{\footerfont}{\sourcesanspro}
-\newcommand*{\bodyfont}{\sourcesanspro}
-\newcommand*{\bodyfontlight}{\sourcesansprolight}
-
-%-------------------------------------------------------------------------------
-%                Configuration for styles
-%-------------------------------------------------------------------------------
-% Configure styles for each CV element
-
-% For fundamental structures
-\newcommand*{\headernamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headernamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{lighttext} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{10}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1.5em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
-% For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
-
-% For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
-
-% For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{9pt}{2em}\bodyfont\bfseries\color{graytext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{2em}\bodyfontlight\color{text} #1}}
-
-\newcommand*{\footerstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\color{lightgray} #1}}
-
-\newcommand*{\skillcapacityheaderstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-
-
-%-------------------------------------------------------------------------------
-%                Commands for personal information
-%-------------------------------------------------------------------------------
-
-
-% Name
-% Usage: \name{name}
-\newcommand*{\name}[1]{\def\@name{#1}}
-
-% Personal address
-% Usage: \address{<address>}
-\newcommand*{\address}[1]{\def\@address{#1}}
-
-% Work position
-% Usage: \name{<position>}
-\newcommand*{\position}[1]{\def\@position{#1}}
-
-% Defines writer's mobile (optional)
-% Usage: \mobile{<mobile number>}
-\newcommand*{\mobile}[1]{\def\@mobile{#1}}
-
-% Defines writer's email (optional)
-% Usage: \email{<email adress>}
-\newcommand*{\email}[1]{\def\@email{#1}}
-
-% Homepage
-% Usage: \homepage{<url>}
-\newcommand*{\homepage}[1]{\def\@homepage{#1}}
-
-% GitHub
-% Usage: \github{<github-nick>}
-\newcommand*{\github}[1]{\def\@github{#1}}
-
-% Defines writer's stackoverflow profile (optional)
-% Usage: \stackoverflow{<so userid>}{<so username>}
-%   e.g.https://stackoverflow.com/users/123456/sam-smith
-%       would be \stackoverflow{123456}{sam-smith}
-\newcommand*{\stackoverflow}[2]{\def\@stackoverflowid{#1}\def\@stackoverflowname{#2}}
-
-% Defines writer's linked-in (optional)
-% Usage: \linkedin{<linked-in-nick>}
-\newcommand*{\linkedin}[2]{\def\@linkedin{#1}\def\@linkedinname{#2}}
-
-
-
-%-------------------------------------------------------------------------------
-%                Commands for extra
-%-------------------------------------------------------------------------------
-%% Define helper macros a user can change easily
-% Header
-\newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{.4mm}
-\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
-\newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
-\newcommand{\acvHeaderIconSep}{\space}
-\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-\newcommand{\acvHeaderAfterSocialSkip}{6mm}
-\newcommand{\acvHeaderAfterQuoteSkip}{5mm}
-
-% Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
-
-
-%-------------------------------------------------------------------------------
-%                Commands for utilities
-%-------------------------------------------------------------------------------
-% Use to align an element of tabular table
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-% Use to draw horizontal line with specific thickness
-\def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
-
-% Use to execute conditional statements by checking empty string
-\newcommand*{\ifempty}[3]{\ifthenelse{\isempty{#1}}{#2}{#3}}
-
-
-%-------------------------------------------------------------------------------
-%                Commands for elements of CV structure
-%-------------------------------------------------------------------------------
-% Define a header for CV
-% Usage: \makecvheader
+% Usage: \makecvheader or \makecvheader[C|L|R]
+% Example: \makecvheader or \makecvheader[C]
 \newcommand*{\makecvheader}[1][C]{%
   \newlength{\headertextwidth}
   \setlength{\headertextwidth}{\textwidth}%
@@ -294,9 +180,8 @@
     \headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}%
 
     \headersocialstyle{%
-      \newbool{isstart}%
-      \setbool{isstart}{true}%
-      \faPhone\@mobile\acvHeaderSocialSep%
+      \href{https://www.linkedin.com/in/\@linkedin}{\acvHeaderIconSep\faLinkedinSquare\acvHeaderIconSep\@linkedinname}\acvHeaderSocialSep%
+      \faPhone\acvHeaderIconSep\@mobile\acvHeaderSocialSep%
       \faEnvelope\acvHeaderIconSep\@email\acvHeaderSocialSep%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
@@ -304,32 +189,56 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
         }%
-      \href{https://github.com/\@github}{\faGithub\acvHeaderIconSep\@github}%
-      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedinname}%
-    } \\[\acvHeaderAfterSocialSkip]%
+      \href{https://github.com/\@github}{\acvHeaderIconSep\faGithub\acvHeaderIconSep\@github}%
+    }%
   \end{minipage}%
+  \vspace{5mm}
 }
 
-% Define a footer for CV
+\newcommand*{\footerstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\color{gray} #1}}
+\newcommand*{\footerfont}{\sourcesanspro}
+
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
+% Example: \makecvfooter{L}{C}{R}
 \newcommand*{\makecvfooter}[3]{%
   \fancyfoot{}
   \fancyfoot[L]{\footerstyle{#1}}
   \fancyfoot[C]{\footerstyle{#2}}
-  \fancyfoot[R]{\footerstyle{#3}}
 }
 
-% Define a section for CV
+
+%-------------------------------------------------------------------------------
+%                SECTION
+%-------------------------------------------------------------------------------
+% Switch section color highlighting
+\newbool{acvSectionColorHighlight}
+\setbool{acvSectionColorHighlight}{true}
+
+\def\@sectioncolor#1#2#3{%
+  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+}
+
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand{\acvSectionTopSkip}{3mm}
+\newcommand{\acvSectionContentTopSkip}{2.5mm}
+
 % Usage: \cvsection{<section-title>}
+% Example: \cvsection{Education}
 \newcommand{\cvsection}[1]{%
-  \vspace{\acvSectionTopSkip}
-  \sectionstyle{#1}
-  \phantomsection
-  \color{gray}\vhrulefill{0.9pt}
+\vspace{\acvSectionTopSkip}
+\sectionstyle{#1}
+\phantomsection
+\color{gray}\vhrulefill{0.9pt}
 }
 
-% Define a subsection for CV
+
+%-------------------------------------------------------------------------------
+%                SUBSECTION
+%-------------------------------------------------------------------------------
+\newcommand*{\subsectionstyle}[1]{\vspace{100mm}{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+
 % Usage: \cvsubsection{<subsection-title>}
+% Example: \cvsubsection{Professional Experience}
 \newcommand{\cvsubsection}[1]{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
@@ -337,7 +246,12 @@
   \phantomsection
 }
 
-% Define a paragraph for CV
+
+%-------------------------------------------------------------------------------
+%                PARAGRAPH
+%-------------------------------------------------------------------------------
+\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+
 \newenvironment{cvparagraph}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
@@ -347,7 +261,10 @@
   \vspace{2mm}
 }
 
-% Define an environment for cventry
+
+%-------------------------------------------------------------------------------
+%                ENTRY
+%-------------------------------------------------------------------------------
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
@@ -355,8 +272,14 @@
   \end{center}
 }
 
-% Define an entry of cv information
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
+% Example: \cventry{Software Engineer}{Google}{Mountain View, CA}{2012 - PRESENT}{\begin{cvitems}...\end{cvitems}}
 \newcommand*{\cventry}[5]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -370,15 +293,25 @@
   \end{tabular*}%
 }
 
-% Define an environment for cvsubentry
+
+%-------------------------------------------------------------------------------
+%                SUBENTRY
+%-------------------------------------------------------------------------------
+% For elements of subentry
+\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{lighttext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+
 \newenvironment{cvsubentries}{%
   \begin{center}
 }{%
   \end{center}
 }
 
-% Define a subentry of cv information
 % Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
+% Example: \cvsubentry{Software Engineer}{Google}{Mountain View, CA}{\begin{cvitems}...\end{cvitems}}
 \newcommand*{\cvsubentry}[4]{%
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -395,36 +328,69 @@
   \end{tabular*}
 }
 
-% Define an environment for cv projects
+
+%-------------------------------------------------------------------------------
+%                ITEMS
+%-------------------------------------------------------------------------------
+\newenvironment{cvitems}{%
+  \vspace{-4.0mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-4.0mm}
+}
+
+
+%-------------------------------------------------------------------------------
+%                FOOTNOTES
+%-------------------------------------------------------------------------------
+\newcommand*{\footnotestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
+\renewcommand{\footnote}[1]{\vspace{5mm}{\footnotestyle{#1}}\vspace{-3mm}}
+
+
+%-------------------------------------------------------------------------------
+%                PROJECTS
+%-------------------------------------------------------------------------------
 \newenvironment{cvprojects}{%
   \vspace{\acvSectionTopSkip}
   \vspace{-2.0mm}
 }{%
 }
 
-\newenvironment{cvprojectcontent}{%
-  \begin{itemize}
-}{%
-  \end{itemize}
-}
-
-% Define a custom command for individual CV project entries
 \newcommand*{\cvproject}[3]{%
     {\entrytitlestyle{#1}\\}
     \descriptionstyle{#2}
-    {#3}
+      #3
 }
 
-\newcommand{\cvprojectbulletstyle}[2]{%
-  \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:} \bodyfontlight{#2}}%
-}
+\newenvironment{cvprojectbulletitems}{
+  \begin{dinglist}{229}
+}{
+  \end{dinglist}
+  }
 
 \newcommand{\cvprojectbullet}[2]{%
-    \item\cvprojectbulletstyle{#1}{#2}%
+    \ifx#2\item
+    \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:}}%
+        #2
+    \else
+      \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:} \bodyfontlight{#2}}
+    \fi
 }
 
 
-% Define an environment for cvskill
+
+%-------------------------------------------------------------------------------
+%                SKILLS
+%-------------------------------------------------------------------------------
+\newcommand*{\skillexperiencestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{8pt}{2em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{8pt}{2em}\bodyfontlight\color{text} #1}}
+
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -437,28 +403,10 @@
   \end{center}
 }
 
+% Usage: \cvskillexperience{<capacity>}
+% Example: \cvskillexperience{Professional}
+\newcommand*{\cvskillexperience}[1]{\skillexperiencestyle{#1} \\}
 
-% Define a cv section skillheader
 % Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\cvskillcapacity}[1]{%
-\skillcapacityheaderstyle{#1} \\
-}
-
-% Define a line of cv information(skill)
-% Usage: \cvskill{<type>}{<skillset>}
-\newcommand*{\cvskill}[2]{%
-  \skilltypestyle{#1} & \skillsetstyle{#2} \\
-}
-
-% Define an environment for cvitems(for cventry)
-\newenvironment{cvitems}{%
-  \vspace{-4.0mm}
-  \begin{justify}
-  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
-    \renewcommand{\labelitemi}{\bullet}
-}{%
-  \end{itemize}
-  \end{justify}
-  \vspace{-4.0mm}
-}
+% Example: \cvskill{Programming}{C, C++, Java, Python, JavaScript, HTML, CSS}
+\newcommand*{\cvskill}[2]{\skilltypestyle{#1} & \skillsetstyle{#2} \\}

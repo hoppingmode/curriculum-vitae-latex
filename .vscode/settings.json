@@ -21,6 +21,7 @@
     "**/*.out": true,
     "out/*[!*.pdf]": true
   },
+  "vscode-color-picker.languages": ["tex"],
   "latex-utilities.formattedPaste.useAsDefault": true,
   "latex-utilities.liveReformat.enabled": true,
   "latex-utilities.message.error.show": false,
@@ -30,9 +31,7 @@
   "latex-workshop.latex.autoBuild.run": "onFileChange",
   "latex-workshop.latex.clean.method": "glob",
   "latex-workshop.latex.outDir": "%DIR%/out",
-  "latex-workshop.latex.texDirs": [
-    "${workspaceFolder}/tex"
-  ],
+  "latex-workshop.latex.texDirs": ["${workspaceFolder}/tex"],
   "latex-workshop.latex.tools": [
     {
       "args": [
