@@ -1,0 +1,55 @@
+\newfontfamily\headerfont[
+  Path=\@fontdir,
+  UprightFont=*-Regular,
+  ItalicFont=*-Italic,
+  BoldFont=*-Bold,
+  BoldItalicFont=*-BoldItalic,
+]{Roboto}
+
+\newfontfamily\headerfontlight[
+  Path=\@fontdir,
+  UprightFont=*-Thin,
+  ItalicFont=*-ThinItalic,
+  BoldFont=*-Medium,
+  BoldItalicFont=*-MediumItalic,
+]{Roboto}
+
+\newcommand{\acvHeaderNameDelim}{\space}
+\newcommand{\acvHeaderAfterNameSkip}{.4mm}
+\newcommand{\acvHeaderAfterPositionSkip}{.4mm}
+\newcommand{\acvHeaderAfterAddressSkip}{0.4mm}
+\newcommand{\acvHeaderIconSep}{\space}
+\newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\newcommand*{\headernamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{lighttext} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\fontsize{10}{1em}\bodyfont\color{awesome} #1}}
+\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1.5em}\headerfont\color{lighttext} #1}}
+
+\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
+
+\newcommand{\cvheader}[4]{
+  \newlength{\headertextwidth}
+  \setlength{\headertextwidth}{\textwidth}%
+
+  \begin{minipage}[c]{\headertextwidth}
+    \centering%
+    \headernamestyle{#1}%
+    \\[\acvHeaderAfterNameSkip]%
+    \headerpositionstyle{#2\\[\acvHeaderAfterPositionSkip]}%
+    \headeraddressstyle{#3\\[\acvHeaderAfterAddressSkip]}%
+    \headersocialstyle{#4}
+    \end{minipage}%
+  \vspace{5mm}
+}
+
+\newcommand*{\cvheaderlinkedin}[2]{\href{https://www.linkedin.com/in/#1}{#2}}
+\newcommand*{\cvheadergithub}[2]{\href{https://github.com/#1}{#2}}
+
+\newcommand*{\cvheadersocial}[2]{
+    % if the icon in parameter 1 is empty, don't display the icon, otherwise display the icon and the text in parameter 2
+    \ifthenelse{\isempty{#2}}{
+      #1\acvHeaderSocialSep%
+    }{
+      #1\acvHeaderIconSep#2\acvHeaderSocialSep%
+    }
+}

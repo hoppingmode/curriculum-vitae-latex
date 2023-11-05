@@ -12,31 +12,24 @@
 % Color themes: awesome-emerald, awesome-darknight
 \colorlet{awesome}{awesome-emerald}
 
-\setbool{acvSectionColorHighlight}{true}
-
-\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-
 \makeatletter
 \patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
 \makeatother
 
-%-------------------------------------------------------------------------------
-%	PERSONAL INFORMATION
-%-------------------------------------------------------------------------------
-\name{Matt Young}
-\position{Software Engineer}
-\address{Newlands, Cape Town, South Africa}
-\mobile{074 580 0580}
-\email{mattyoung305@gmail.com}
-\linkedin{matt-young-691b48189}{Matt Young}
-\github{mattgoespro}
-
+\usepackage{header}
+\usepackage{styles/sections/footer}
+\usepackage{styles/sections/summary}
+\usepackage{styles/sections/experience}
+\usepackage{styles/sections/skills}
+\usepackage{styles/sections/education}
+\usepackage{styles/sections/entry}
+\usepackage{styles/sections/projects}
+\usepackage{styles/sections/section}
 
 %-------------------------------------------------------------------------------
 \begin{document}
 
-% Header (C: center, L: left, R: right) \makecvheader[C]{}
-\makecvheader{}
+\input{tex/header}
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 \makecvfooter{\today}
@@ -46,7 +39,7 @@
 %-------------------------------------------------------------------------------
 %	CV CONTENT
 %-------------------------------------------------------------------------------
-\input{tex/sections/header}
+\input{tex/sections/summary}
 \input{tex/sections/experience}
 \input{tex/sections/skills}
 

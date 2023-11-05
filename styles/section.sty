@@ -1,0 +1,38 @@
+%-------------------------------------------------------------------------------
+%                SECTION
+%-------------------------------------------------------------------------------
+% Switch section color highlighting
+\newbool{acvSectionColorHighlight}
+\setbool{acvSectionColorHighlight}{true}
+
+\def\@sectioncolor#1#2#3{%
+  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+}
+
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand{\acvSectionTopSkip}{3mm}
+\newcommand{\acvSectionContentTopSkip}{2.5mm}
+
+% Usage: \cvsection{<section-title>}
+% Example: \cvsection{Education}
+\newcommand{\cvsection}[1]{%
+\vspace{\acvSectionTopSkip}
+\sectionstyle{#1}
+\phantomsection
+\color{gray}\vhrulefill{0.9pt}
+}
+
+
+%-------------------------------------------------------------------------------
+%                SUBSECTION
+%-------------------------------------------------------------------------------
+\newcommand*{\subsectionstyle}[1]{\vspace{100mm}{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+
+% Usage: \cvsubsection{<subsection-title>}
+% Example: \cvsubsection{Professional Experience}
+\newcommand{\cvsubsection}[1]{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-3mm}
+  \subsectionstyle{#1}
+  \phantomsection
+}

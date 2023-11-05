@@ -1,0 +1,26 @@
+%-------------------------------------------------------------------------------
+%                SKILLS
+%-------------------------------------------------------------------------------
+\newcommand*{\skillexperiencestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{8pt}{2em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{8pt}{2em}\bodyfontlight\color{text} #1}}
+
+\newenvironment{cvskills}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2.0mm}
+  \begin{center}
+    \setlength\tabcolsep{1ex}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth *    \real{0.9}}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+
+% Usage: \cvskillexperience{<capacity>}
+% Example: \cvskillexperience{Professional}
+\newcommand*{\cvskillexperience}[1]{\skillexperiencestyle{#1} \\}
+
+% Usage: \cvskill{<type>}{<skillset>}
+% Example: \cvskill{Programming}{C, C++, Java, Python, JavaScript, HTML, CSS}
+\newcommand*{\cvskill}[2]{\skilltypestyle{#1} & \skillsetstyle{#2} \\}
