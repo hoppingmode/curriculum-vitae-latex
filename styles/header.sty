@@ -1,0 +1,27 @@
+%-------------------------------------------------------------------------------
+%                HEADER
+%-------------------------------------------------------------------------------
+
+% === HEADER ===
+\newcommand{\cvheader}[4]{
+  \newlength{\headertextwidth}
+  \setlength{\headertextwidth}{\textwidth}%
+  \begin{minipage}[c]{\headertextwidth}
+    \centering%
+    \fontsize{32pt}{1em}\headerfontlight\color{lighttext} #1%
+    \\[-4mm]%
+    \fontsize{10}{1em}\bodyfont\color{awesome}#2\\[0.4mm]%
+    \fontsize{8pt}{1.5em}\headerfont\color{lighttext} #3\\[3mm]%
+    \fontsize{6.8pt}{1em}\headerfont\color{text}{#4}
+    \end{minipage}%
+  \vspace{5mm}
+}
+
+% === HEADER SOCIAL ICON & TEXT ===
+\newcommand*{\cvheadersocial}[2]{
+    \ifthenelse{\isempty{#2}}{
+      #1\quad\textbar\quad%
+    }{
+      #1\space#2\quad\textbar\quad%
+    }
+}

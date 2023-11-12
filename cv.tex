@@ -6,9 +6,6 @@
 % Page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
-% Included fonts folder
-\fontdir[./fonts/]
-
 % Color themes: awesome-emerald, awesome-darknight
 \colorlet{awesome}{awesome-emerald}
 
@@ -16,7 +13,13 @@
 \patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
 \makeatother
 
-\usepackage{header}
+\usepackage{styles/header}
+\usepackage{styles/section}
+\usepackage{styles/entry}
+\usepackage{styles/utility}
+\usepackage{styles/fonts}
+\usepackage{styles/icons}
+
 \usepackage{styles/sections/footer}
 \usepackage{styles/sections/summary}
 \usepackage{styles/sections/experience}
@@ -26,6 +29,9 @@
 \usepackage{styles/sections/projects}
 \usepackage{styles/sections/section}
 
+\author{Matt Young}
+\title{Matt Young~~~·~~~Curriculum Vitae}
+
 %-------------------------------------------------------------------------------
 \begin{document}
 
@@ -33,7 +39,7 @@
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 \makecvfooter{\today}
-{Matt D. Young~~~·~~~Curriculum Vitae}
+{Matt Young~~~·~~~Curriculum Vitae}
 {\thepage}
 
 %-------------------------------------------------------------------------------
