@@ -1,0 +1,40 @@
+% ================================================================================
+% SECTION
+% ================================================================================
+
+% --- COLOR SECTION TITLES ---
+\def\@sectioncolor#1#2#3{%
+  \color{awesome}#1#2#3
+}
+
+
+% --- STYLES ---
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand{\acvSectionTopSkip}{3mm}
+\newcommand{\acvSectionContentTopSkip}{2.5mm}
+
+
+% --- COMMANDS ---
+\newcommand{\cvsection}[1]{%
+\vspace{\acvSectionTopSkip}
+\sectionstyle{#1}
+\phantomsection
+\color{gray}\vhrulefill{0.9pt}
+}
+
+
+% =======================================================
+% SUBSECTION
+% =======================================================
+
+% --- STYLES ---
+\newcommand*{\subsectionstyle}[1]{\vspace{100mm}{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
+
+
+% --- COMMANDS ---
+\newcommand{\cvsubsection}[1]{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-3mm}
+  \subsectionstyle{#1}
+  \phantomsection
+}

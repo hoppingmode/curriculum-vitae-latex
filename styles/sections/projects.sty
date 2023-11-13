@@ -1,9 +1,22 @@
+% =======================================================
+% PROJECTS
+% =======================================================
+
+% --- ENVIRONMENTS ---
 \newenvironment{cvprojects}{%
   \vspace{\acvSectionTopSkip}
   \vspace{-2.0mm}
 }{%
 }
 
+\newenvironment{cvprojectbulletitems}{
+  \begin{dinglist}{229}
+}{
+  \end{dinglist}
+}
+
+
+% --- STYLES ---
 \newcommand*{\cvproject}[3]{%
   \needspace{5\baselineskip}
   \entrytitlestyle{#1}\\
@@ -11,12 +24,8 @@
   #3
 }
 
-\newenvironment{cvprojectbulletitems}{
-  \begin{dinglist}{229}
-}{
-  \end{dinglist}
-  }
 
+% --- COMMANDS ---
 \newcommand{\cvprojectbullet}[2]{%
     \ifx#2\item
     \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:}}%

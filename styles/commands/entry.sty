@@ -1,6 +1,8 @@
-%-------------------------------------------------------------------------------
-%                ENTRY
-%-------------------------------------------------------------------------------
+% =======================================================
+% ENTRY
+% =======================================================
+
+% --- ENVIRONMENTS ---
 \newenvironment{cventries}{%
   \vspace{\acvSectionContentTopSkip}
   \begin{center}
@@ -8,14 +10,16 @@
   \end{center}
 }
 
+
+% --- STYLES ---
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{text} #1}}
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 \newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
-% Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
-% Example: \cventry{Software Engineer}{Google}{Mountain View, CA}{2012 - PRESENT}{\begin{cvitems}...\end{cvitems}}
+
+% ---  COMMANDS ---
 \newcommand*{\cventry}[5]{%
   \vspace{-2.0mm}
   \setlength\tabcolsep{0pt}
@@ -30,24 +34,27 @@
 }
 
 
-%-------------------------------------------------------------------------------
-%                SUBENTRY
-%-------------------------------------------------------------------------------
-% For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{lighttext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+% ================================================================================
+% SUBENTRY
+% ================================================================================
 
+% --- ENVIRONMENTS ---
 \newenvironment{cvsubentries}{%
   \begin{center}
 }{%
   \end{center}
 }
 
-% Usage: \cvsubentry{<position>}{<title>}{<date>}{<description>}
-% Example: \cvsubentry{Software Engineer}{Google}{Mountain View, CA}{\begin{cvitems}...\end{cvitems}}
+
+% --- STYLES ---
+\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{lighttext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{lighttext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+
+
+% ---  COMMANDS ---
 \newcommand*{\cvsubentry}[4]{%
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
@@ -65,9 +72,11 @@
 }
 
 
-%-------------------------------------------------------------------------------
-%                ITEMS
-%-------------------------------------------------------------------------------
+% =======================================================
+% ITEMS
+% =======================================================
+
+% --- ENVIRONMENTS ---
 \newenvironment{cvitems}{%
   \vspace{-4.0mm}
   \begin{justify}

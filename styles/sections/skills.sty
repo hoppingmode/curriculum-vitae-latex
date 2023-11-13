@@ -1,10 +1,8 @@
-%-------------------------------------------------------------------------------
-%                SKILLS
-%-------------------------------------------------------------------------------
-\newcommand*{\skillexperiencestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{text} #1}}
-\newcommand*{\skilltypestyle}[1]{{\fontsize{8pt}{2em}\bodyfont\bfseries\color{text} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{8pt}{2em}\bodyfontlight\color{text} #1}}
+% =======================================================
+% SKILLS
+% =======================================================
 
+% --- ENVIRONMENTS ---
 \newenvironment{cvskills}{%
   \vspace{\acvSectionContentTopSkip}
   \vspace{-2.0mm}
@@ -17,10 +15,13 @@
   \end{center}
 }
 
-% Usage: \cvskillexperience{<capacity>}
-% Example: \cvskillexperience{Professional}
-\newcommand*{\cvskillexperience}[1]{\skillexperiencestyle{#1} \\}
 
-% Usage: \cvskill{<type>}{<skillset>}
-% Example: \cvskill{Programming}{C, C++, Java, Python, JavaScript, HTML, CSS}
+% --- STYLES ---
+\newcommand*{\skillexperiencestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\fontsize{8pt}{2em}\bodyfont\bfseries\color{text} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{8pt}{2em}\bodyfontlight\color{text} #1}}
+
+
+% ---  COMMANDS ---
+\newcommand*{\cvskillexperience}[1]{\skillexperiencestyle{#1} \\}
 \newcommand*{\cvskill}[2]{\skilltypestyle{#1} & \skillsetstyle{#2} \\}

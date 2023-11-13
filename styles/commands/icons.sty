@@ -1,11 +1,15 @@
-%-------------------------------------------------------------------------------
-%                ICONS
-%-------------------------------------------------------------------------------
-% === Load FontAwesome Icons ===
-\newfontfamily\faBrands[Path=fonts/, Extension=.otf]{FontAwesomeBrands}
+% ================================================================================
+% ICON FONT FAMILIES
+% ================================================================================
+\setfontfamily\FA[Path=fonts/]{FontAwesome} % Font Awesome
+\newfontfamily\faBrands[Path=fonts/, Extension=.otf]{FontAwesomeBrands} % Font Awesome Brands
 
 
-% === PROGRAMMING ===
+% =======================================================
+% ICON CATEGORY COMMANDS
+% =======================================================
+
+% --- PROGRAMMING ---
 \newcommand*{\faBoldCode}{\faBrands{code}}%
 \newcommand*{\faSquareCode}{\faBrands{square-code}}%
 \newcommand*{\faSquareTerminal}{\faBrands{rectangle-terminal}}%
@@ -13,13 +17,12 @@
 \newcommand*{\faSecret}{\faBrands{user-secret}}%
 \newcommand*{\faVersionControl}{\faBrands{code-branch}}%
 
-% === LANGUAGES ===
+% --- PROGRAMMING LANGUAGES ---
 \newcommand*{\faJavascript}{\faBrands{javascript}}%
 \newcommand*{\faSass}{\faBrands{sass}}%
 \newcommand*{\faTypescript}{\faBrands{typescript}}%
 
-
-% === TECHNOLOGIES ===
+% --- PROGRAMMING TECHNOLOGIES ---
 \newcommand*{\faNodejs}{\faBrands{node-js}}%
 \newcommand*{\faReact}{\faBrands{react}}%
 \newcommand*{\faAngular}{\faBrands{angular}}%
@@ -27,8 +30,8 @@
 \newcommand*{\faJenkins}{\faBrands{jenkins}}%
 \newcommand*{\faGitVC}{\faBrands{git-alt}}%
 
-
-% === MISC ===
+% --- MISC ---
 \newcommand*{\faGithubBox}{\faBrands{github}}%
 \newcommand*{\faLinkedIn}{\faBrands{linkedin}}%
 \newcommand*{\faJenkinsCI}{\faBrands{jenkins}}%
+% \newcommand*{\faProfessional}{\faBrands{mug-saucer}}%

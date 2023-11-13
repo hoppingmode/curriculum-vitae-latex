@@ -1,6 +1,6 @@
-%-------------------------------------------------------------------------------
+% =======================================================
 % CONFIGURATIONS
-%-------------------------------------------------------------------------------
+% =======================================================
 \documentclass[11pt, a4paper]{cv}
 
 % Page margins with geometry
@@ -14,25 +14,20 @@
 \makeatother
 
 \usepackage{styles/header}
-\usepackage{styles/section}
-\usepackage{styles/entry}
-\usepackage{styles/utility}
-\usepackage{styles/fonts}
-\usepackage{styles/icons}
+\usepackage{styles/commands/section}
+\usepackage{styles/commands/entry}
+\usepackage{styles/commands/utility}
+\usepackage{styles/commands/fonts}
+\usepackage{styles/commands/icons}
 
 \usepackage{styles/sections/footer}
-\usepackage{styles/sections/summary}
-\usepackage{styles/sections/experience}
 \usepackage{styles/sections/skills}
-\usepackage{styles/sections/education}
-\usepackage{styles/sections/entry}
 \usepackage{styles/sections/projects}
-\usepackage{styles/sections/section}
 
 \author{Matt Young}
 \title{Matt Young~~~·~~~Curriculum Vitae}
 
-%-------------------------------------------------------------------------------
+% =======================================================
 \begin{document}
 
 \input{tex/header}
@@ -42,9 +37,9 @@
 {Matt Young~~~·~~~Curriculum Vitae}
 {\thepage}
 
-%-------------------------------------------------------------------------------
+% =======================================================
 %	CV CONTENT
-%-------------------------------------------------------------------------------
+% =======================================================
 \input{tex/sections/summary}
 \input{tex/sections/experience}
 \input{tex/sections/skills}
@@ -54,5 +49,5 @@
 \input{tex/sections/education}
 \input{tex/sections/projects}
 
-%-------------------------------------------------------------------------------
+% =======================================================
 \end{document}

@@ -1,0 +1,18 @@
+% ================================================================================
+% PARAGRAPH
+% ================================================================================
+
+% --- ENVIRONMENTS ---
+\newenvironment{cvparagraph}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-3mm}
+  \paragraphstyle
+}{%
+  \par
+  \vspace{2mm}
+}
+
+
+% --- COMMANDS ---
+\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+
