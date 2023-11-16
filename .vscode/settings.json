@@ -5,7 +5,8 @@
     "editor.formatOnSave": true
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.latex": true
+    "source.fixAll.latex": true,
+    "source.latex.linting.chktex": true
   },
   "files.exclude": {
     "**/*.aux": true,

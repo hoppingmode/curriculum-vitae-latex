@@ -1,8 +1,13 @@
 % ================================================================================
 % ICON FONT FAMILIES
 % ================================================================================
-\setfontfamily\FA[Path=fonts/]{FontAwesome} % Font Awesome
-\newfontfamily\faBrands[Path=fonts/, Extension=.otf]{FontAwesomeBrands} % Font Awesome Brands
+\def\@iconsdir{fonts/FontAwesome}
+\def\@fontawesome#1{\@iconsdir/#1}
+
+\setfontfamily\FA[Path=\@iconsdir]{Font-Awesome-5} % Font Awesome 5
+\newfontfamily\faL[Path=\@fontawesome6, Extension=.otf]{FontAwesome6} % Font Awesome 6
+\newfontfamily\faB[Path=\@fontawesome6, Extension=.otf]{FontAwesome6Solid} % Font Awesome 6 Bold
+\newfontfamily\faBrands[Path=\@fontawesome6, Extension=.otf]{FontAwesomeBrands} % Font Awesome Brands
 
 
 % =======================================================
@@ -30,8 +35,9 @@
 \newcommand*{\faJenkins}{\faBrands{jenkins}}%
 \newcommand*{\faGitVC}{\faBrands{git-alt}}%
 
-% --- MISC ---
+% --- MISC ---*
 \newcommand*{\faGithubBox}{\faBrands{github}}%
 \newcommand*{\faLinkedIn}{\faBrands{linkedin}}%
 \newcommand*{\faJenkinsCI}{\faBrands{jenkins}}%
-% \newcommand*{\faProfessional}{\faBrands{mug-saucer}}%
+\newcommand*{\faCasual}{\faB{mug-saucer}}%
+\newcommand*{\faProfessional}{\faB{user-tie}}%

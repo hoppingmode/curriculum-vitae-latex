@@ -3,13 +3,11 @@
 % ================================================================================
 
 % --- COLOR SECTION TITLES ---
-\def\@sectioncolor#1#2#3{%
-  \color{awesome}#1#2#3
-}
+\def\@sectioncolor#1#2#3{{\color{awesome}{#1}#2#3}}
 
 
 % --- STYLES ---
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor#1}}
 \newcommand{\acvSectionTopSkip}{3mm}
 \newcommand{\acvSectionContentTopSkip}{2.5mm}
 
