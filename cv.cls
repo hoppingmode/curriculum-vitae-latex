@@ -30,9 +30,6 @@
 \RequirePackage{xifthen}
 % Manage math fonts
 \RequirePackage{unicode-math}
-% Use icons from font-awesome
-% (https://github.com/posquit0/latex-fontawesome)
-\RequirePackage{fontawesome}
 \RequirePackage[default,opentype]{sourcesanspro}
 % Manage colors
 \RequirePackage[skins]{tcolorbox}
