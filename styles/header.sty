@@ -11,18 +11,26 @@
     \fontsize{32pt}{1em}\headerfontlight\color{lighttext} #1%
     \\[-4mm]%
     \fontsize{10}{1em}\bodyfont\color{awesome}#2\\[0.4mm]%
-    \fontsize{8pt}{1.5em}\headerfont\color{lighttext} #3\\[3mm]%
-    \fontsize{6.8pt}{1em}\headerfont\color{text}{#4}
+    \fontsize{8pt}{1.5em}\headerfont\color{lighttext}#3\\[3mm]%
+    \fontsize{6.8pt}{1em}\headerfont\color{text}#4
     \end{minipage}%
   \vspace{5mm}
+}
+
+\newcommand*{\cvheadernamestyle}[1]{
+  \fontsize{36pt}{1em}\headerfontlight\color{lighttext}#1%
+}
+
+\newcommand*{\cvheadername}[2]{
+  \textbf{\cvheadernamestyle{#1}}\space\cvheadernamestyle{#2}%
 }
 
 
 % --- COMMANDS ---
 \newcommand*{\cvheadersocial}[2]{
-    \ifthenelse{\isempty{#2}}{
-      #1\quad\textbar\quad%
-    }{
-      #1\space#2\quad\textbar\quad%
-    }
+  \headerfont\color{lighttext}#1\space\headerfont\color{lighttext}#2%
+}
+
+\newcommand*{\headersocialsep}{
+  \quad\textbar\quad%
 }

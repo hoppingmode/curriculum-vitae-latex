@@ -1,11 +1,25 @@
 % ================================================================================
 % ICON FONT FAMILIES
 % ================================================================================
-\def\@iconsdir{fonts/FontAwesome}
-\def\@fontawesome#1{\@iconsdir/#1}
 
-\setfontfamily\fa[Path=\@iconsdir, Extension=.otf]{FontAwesome6ProRegular}
-\newfontfamily\fab[Path=\@iconsdir, Extension=.otf]{FontAwesome6BrandsRegular}
+\setfontfamily\faPro[
+    Path=fonts/FontAwesome/,
+    Extension=.otf,
+    UprightFont=*-Regular-400,
+    BoldFont=*-Solid-900,
+    ]{Font Awesome 6 Pro}
+
+\setfontfamily\faFree[
+    Path=fonts/FontAwesome/,
+    Extension=.otf,
+    UprightFont=*-Regular-400,
+    BoldFont=*-Solid-900,
+    ]{Font Awesome 6 Free}
+
+\newfontfamily\faBrands[Path=fonts/FontAwesome/,
+    Extension=.otf,
+    UprightFont=*-Regular-400
+]{Font Awesome 6 Brands}
 
 
 % =======================================================
@@ -13,28 +27,30 @@
 % =======================================================
 
 % --- PROGRAMMING ---
-\newcommand*{\faBoldCode}{\fab{code}}%
-\newcommand*{\faSquareCode}{\fab{square-code}}%
-\newcommand*{\faSquareTerminal}{\fab{rectangle-terminal}}%
-\newcommand*{\faCurlyBraces}{\fab{brackets-curly}}%
-\newcommand*{\faSecret}{\fab{user-secret}}%
-\newcommand*{\faVersionControl}{\fab{code-branch}}%
+\newcommand*{\faBoldCode}{\faBrands{code}}%
+\newcommand*{\faSquareCode}{\faBrands{square-code}}%
+\newcommand*{\faSquareTerminal}{\faBrands{rectangle-terminal}}%
+\newcommand*{\faCurlyBraces}{\faBrands{brackets-curly}}%
+\newcommand*{\faSecret}{\faBrands{user-secret}}%
+\newcommand*{\faVersionControl}{\faBrands{code-branch}}%
 
 % --- PROGRAMMING LANGUAGES ---
-\newcommand*{\faJavascript}{\fab{js-square}}%
-\newcommand*{\faSass}{\fab{sass}}%
+\newcommand*{\faJavascript}{\faBrands{js-square}}%
+\newcommand*{\faSass}{\faBrands{sass}}%
 
 % --- PROGRAMMING TECHNOLOGIES ---
-\newcommand*{\faNodejs}{\fab{node-js}}%
-\newcommand*{\faReact}{\fab{react}}%
-\newcommand*{\faAngular}{\fab{angular}}%
-\newcommand*{\faDocker}{\fab{docker}}%
-\newcommand*{\faJenkins}{\fab{jenkins}}%
-\newcommand*{\faGitVC}{\fab{git-alt}}%
+\newcommand*{\faNodejs}{\faBrands{node-js}}%
+\newcommand*{\faReact}{\faBrands{react}}%
+\newcommand*{\faAngular}{\faBrands{angular}}%
+\newcommand*{\faDocker}{\faBrands{docker}}%
+\newcommand*{\faJenkins}{\faBrands{jenkins}}%
+\newcommand*{\faGitVC}{\faBrands{git-alt}}%
 
 % --- MISC ---*
-\newcommand*{\faGithubBox}{\fab{github-square}}%
-\newcommand*{\faLinkedIn}{\fab{linkedin}}%
-\newcommand*{\faJenkinsCI}{\fab{jenkins}}%
-\newcommand*{\faMug}{\fab{mug-hot}}%
-\newcommand*{\faProfessional}{\fab{user-tie}}%
+\newcommand*{\faGitHub}{\faBrands{github-square}}%
+\newcommand*{\faLinkedIn}{\faBrands{linkedin}}%
+\newcommand*{\faJenkinsCI}{\faBrands{jenkins}}%
+\newcommand*{\faMug}{\faBrands{mug-hot}}%
+\newcommand*{\faProfessional}{\faBrands{user-tie}}%
+\newcommand*{\faEnvelope}{\faFree{envelope}}%
+\newcommand*{\faPhone}{\faPro{mobile-screen-button}}%

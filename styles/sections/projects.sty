@@ -15,8 +15,17 @@
   \end{dinglist}
 }
 
-
 % --- STYLES ---
+\newcommand*{\cvprojectssubtitlestyle}[1]{
+  \textit{\fontsize{9pt}{1em}\bodyfontlight\color{lighttext}#1}
+}
+
+% --- COMMANDS ---
+\newcommand{\cvprojectssubtitle}[1]{%
+  \\
+  \cvprojectssubtitlestyle{#1}
+}
+
 \newcommand*{\cvproject}[3]{%
   \needspace{5\baselineskip}
   \entrytitlestyle{#1}\\
@@ -24,8 +33,6 @@
   #3
 }
 
-
-% --- COMMANDS ---
 \newcommand{\cvprojectbullet}[2]{%
     \ifx#2\item
     \fontsize{9pt}{1em}\upshape\color{darkgray}{\textbf{#1:}}%
