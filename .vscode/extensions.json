@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "mathematic.vscode-latex",
     "james-yu.latex-workshop",
     "usernamehw.errorlens",
     "felipecaputo.git-project-manager",
@@ -10,7 +9,6 @@
     "esbenp.prettier-vscode",
     "richie5um2.vscode-sort-json",
     "eamodio.gitlens",
-    "torn4dom4n.latex-support",
     "markosth09.color-picker"
   ]
 }

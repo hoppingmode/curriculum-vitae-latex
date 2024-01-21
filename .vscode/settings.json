@@ -8,31 +8,25 @@
     "source.fixAll.latex": "explicit",
     "source.latex.linting.chktex": "explicit"
   },
-  "files.exclude": {
-    "**/*.aux": true,
-    "**/*.fls": true,
-    "**/*.log": true,
-    "**/*.out": true,
-    "out/*[!*.pdf]": true
-  },
   "files.watcherExclude": {
-    "**/*.aux": true,
-    "**/*.fls": true,
-    "**/*.log": true,
-    "**/*.out": true,
-    "out/*[!*.pdf]": true
+    "out/**": true
   },
-  "vscode-color-picker.languages": ["tex"],
-  "latex-utilities.formattedPaste.useAsDefault": true,
-  "latex-utilities.liveReformat.enabled": true,
-  "latex-utilities.message.error.show": false,
-  "latex-utilities.message.update.show": false,
-  "latex-workshop.bibtex-fields.sort.enabled": true,
-  "latex-workshop.bibtex-format.tab": "4",
-  "latex-workshop.latex.autoBuild.run": "onFileChange",
-  "latex-workshop.latex.clean.method": "glob",
+  // "latex-workshop.hover.citation.enabled": true,
+  // "latex-workshop.hover.preview.cursor.enabled": true,
+  // "latex-workshop.hover.preview.cursor.symbol": "\\!|\\!",
+  // "latex-workshop.hover.preview.enabled": true,
+  // "latex-workshop.hover.preview.newcommand.newcommandFile": "%DIR%/cv.tex",
+  // "latex-workshop.hover.preview.newcommand.parseTeXFile.enabled": true,
+  // "latex-workshop.intellisense.package.dirs": [
+  //   "C:\\texlive\\2023\\texmf-dist",
+  //   "C:\\texlive\\2023\\texmf-dist\\tex\\latex"
+  // ],
+  // "latex-workshop.intellisense.package.enabled": true,
+  // "latex-workshop.intellisense.update.aggressive.enabled": true,
+  // "latex-workshop.intellisense.update.delay": 0,
+  // "latex-workshop.latex.autoBuild.run": "onFileChange",
   "latex-workshop.latex.outDir": "%DIR%/out",
-  "latex-workshop.latex.texDirs": ["${workspaceFolder}/tex"],
+  "latex-workshop.latex.texDirs": ["%DIR%/tex", "%DIR%/tex/sections"],
   "latex-workshop.latex.tools": [
     {
       "args": [
@@ -48,10 +42,24 @@
     }
   ],
   "latex-workshop.linting.chktex.enabled": true,
-  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.linting.run": "onType",
+  // "latex-workshop.synctex.afterBuild.enabled": true,
+  // "latex-workshop.view.autoFocus.enabled": true,
+  // "latex-workshop.view.outline.commands": ["ref", "input", "usepackage"],
+  // "latex-workshop.view.outline.follow.editor": true,
+  // "latex-workshop.view.outline.sections": [
+  //   "header",
+  //   "summary",
+  //   "education",
+  //   "experience",
+  //   "projects",
+  //   "skills"
+  // ],
+  // "latex-workshop.view.pdf.viewer": "tab",
   "search.exclude": {
     "out": true
   },
+  "vscode-color-picker.languages": ["tex"],
   "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"
   },
