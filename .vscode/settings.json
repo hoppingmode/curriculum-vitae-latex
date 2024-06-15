@@ -11,20 +11,7 @@
   "files.watcherExclude": {
     "out/**": true
   },
-  // "latex-workshop.hover.citation.enabled": true,
-  // "latex-workshop.hover.preview.cursor.enabled": true,
-  // "latex-workshop.hover.preview.cursor.symbol": "\\!|\\!",
-  // "latex-workshop.hover.preview.enabled": true,
-  // "latex-workshop.hover.preview.newcommand.newcommandFile": "%DIR%/cv.tex",
-  // "latex-workshop.hover.preview.newcommand.parseTeXFile.enabled": true,
-  // "latex-workshop.intellisense.package.dirs": [
-  //   "C:\\texlive\\2023\\texmf-dist",
-  //   "C:\\texlive\\2023\\texmf-dist\\tex\\latex"
-  // ],
-  // "latex-workshop.intellisense.package.enabled": true,
-  // "latex-workshop.intellisense.update.aggressive.enabled": true,
-  // "latex-workshop.intellisense.update.delay": 0,
-  // "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
   "latex-workshop.latex.outDir": "%DIR%/out",
   "latex-workshop.latex.texDirs": ["%DIR%/tex", "%DIR%/tex/sections"],
   "latex-workshop.latex.tools": [
@@ -41,21 +28,8 @@
       "name": "latexmk"
     }
   ],
-  "latex-workshop.linting.chktex.enabled": true,
   "latex-workshop.linting.run": "onType",
-  // "latex-workshop.synctex.afterBuild.enabled": true,
-  // "latex-workshop.view.autoFocus.enabled": true,
-  // "latex-workshop.view.outline.commands": ["ref", "input", "usepackage"],
-  // "latex-workshop.view.outline.follow.editor": true,
-  // "latex-workshop.view.outline.sections": [
-  //   "header",
-  //   "summary",
-  //   "education",
-  //   "experience",
-  //   "projects",
-  //   "skills"
-  // ],
-  // "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.synctex.afterBuild.enabled": true,
   "search.exclude": {
     "out": true
   },

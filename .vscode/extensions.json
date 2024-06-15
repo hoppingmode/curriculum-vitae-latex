@@ -9,6 +9,7 @@
     "esbenp.prettier-vscode",
     "richie5um2.vscode-sort-json",
     "eamodio.gitlens",
-    "markosth09.color-picker"
+    "markosth09.color-picker",
+    "stxr.iconfont-preview"
   ]
 }
