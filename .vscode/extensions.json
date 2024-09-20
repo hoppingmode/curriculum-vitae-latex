@@ -3,13 +3,13 @@
     "james-yu.latex-workshop",
     "usernamehw.errorlens",
     "felipecaputo.git-project-manager",
-    "github.copilot-chat",
     "tecosaur.latex-utilities",
-    "ibm.output-colorizer",
     "esbenp.prettier-vscode",
     "richie5um2.vscode-sort-json",
     "eamodio.gitlens",
     "markosth09.color-picker",
-    "stxr.iconfont-preview"
+    "stxr.iconfont-preview",
+    "github.copilot-chat",
+    "github.copilot"
   ]
 }
